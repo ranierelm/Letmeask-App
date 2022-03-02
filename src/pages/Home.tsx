@@ -1,4 +1,7 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { AuthContext } from '../App';
 
 import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
@@ -9,6 +12,15 @@ import '../styles/auth.scss'
 
 export function Home() {
     let navigate = useNavigate();
+    const { user, signInWithGoogle } = useContext(AuthContext)
+
+    async function handleCreateRoom() {
+        if (!user) {
+            await signInWithGoogle()
+        }
+
+        navigate('/rooms/new');
+    }
 
     return (
         <div id="page-auth">
@@ -21,7 +33,7 @@ export function Home() {
                 <div className="main-content">
                     <img src={logoImg} alt="Letmeask" />
                     <button
-                        onClick={() => { navigate('/rooms/new') }}
+                        onClick={() => { handleCreateRoom() }}
                         className="create-room"
                     >
                         <img src={googleIconImg} alt="" />
