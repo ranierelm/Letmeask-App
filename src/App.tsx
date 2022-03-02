@@ -1,7 +1,7 @@
+import { Home } from './pages/Home';
+
 export function App() {
   return (
-    <div>
-      <h1>Letmeask App</h1>
-    </div>
+      <Home/>
   );
 }
