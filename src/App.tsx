@@ -1,7 +1,16 @@
-import { Home } from './pages/Home';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-export function App() {
+import { Home } from './pages/Home';
+import { NewRoom } from './pages/NewRoom';
+
+
+export default function App() {
   return (
-      <Home/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/newroom" element={<NewRoom />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
